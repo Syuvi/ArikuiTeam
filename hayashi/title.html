@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>ハングリーじゃんけん</title>	
+		
+		<style>
+			#titlewindow{
+				width:      800px;
+				height:     600px;
+				border: 	  1px solid gray;
+				text-align: center;
+				//background-image: url(image/title_back.jpg);
+				background-size: 800px 600px;
+			}
+		
+			#titlewindow > h1{
+				margin-top: 200px;
+				font-size: 32pt;
+				color : #000;
+			}
+			
+			#titlewindow > form > button{
+				width:      200px;
+				height:     60px;
+				font-size:  16pt;
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="titlewindow">
+			<h1>ハングリーじゃんけん</h1>	
+			<form action="game.php" method="GET">
+				<button><strong>スタート</strong></button>
+			</form>
+		</section>
+	</body>
+</html
