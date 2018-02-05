@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>ハングリーじゃんけん</title>	
+		<link rel="stylesheet" href="css/style_result.css">
+	</head>
+	<body>
+		<section id="resultwindow">
+			<h1>結果発表</h1>	
+			<img id="resultImg" src="image/kachi.png">
+			<form action="title.html">
+				<button><strong>タイトルへ</strong></button>
+			</form>
+		</section>
+			
+		<script>
+			var result = document.querySelector("#resultImg");
+			var request=new XMLHttpRequest();
+			request.open('GET','http://localhost/hungry.php',false);
+			request.onload=function(){
+				if(request.status===200){
+					var response = request.responseText;
+					var json = JSON.parse(response);
+					
+					if(json.result==1){
+						result.src="image/kachi.png";
+					}
+					else if(json.result==0){
+						result.src="image/make.png";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

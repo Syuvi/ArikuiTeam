@@ -1,7 +1,7 @@
 よろしくね
 ※作業ディレクトリをArikuiTeamにしておくこと
 <コミット手順>
-.git add .
+git add .
 git commit -a -m '作業コメント'
 <プッシュ手順>
 git push
