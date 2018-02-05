@@ -254,7 +254,7 @@
  					var response = request.responseText; //JSONデータを受け取る
  					var json     = JSON.parse(response); //JSで使えるようにする
  					
- 					enemyHand = Number(json.enemyHand);
+ 					enemyHand = Number(json);
  					if(enemyHand !== -1)
  					{
  						 if((myHand === 1 && enemyHand === 1) ||
