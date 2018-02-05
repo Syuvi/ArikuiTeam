@@ -1,6 +1,6 @@
 <?php
 $name=$_GET['name'];
-$hand=$_GET['hand'];;
+$hand=$_GET['hand'];
 //mysql処理
 //-------------------------------------------------
 // DB接続準備
@@ -20,7 +20,7 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 	$sth->bindValue(':name', $name, PDO::PARAM_STR);
 	$sth->execute();
 	//１人しかいない前提で核
-	//自身の手を代入
+	//サーバー上にある自身の手を代入
 	$result=$sth->fetch();
 	$myHand=$result['hand'];
 	
@@ -38,13 +38,18 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 	$sth=$dbh->prepare($sql);
 	$result = $dbh -> query($sql);
 	$data=array();
-	//テーブルの中身を連装配列に
+	
+	$enemyHand=-1;
+	//テーブルの中身を巡回
 	foreach($result as $row){
-		$name=$row['name'];
-		$hand=$row['hund'];
-	   	$data[$name]=$hand;
+	//自分の手はみない
+		if($row['name']==$name)continue;
+		$enemyHand=$row['hand']; //相手の手を代入
+		//$name=$row['name'];
+		//$hand=$row['hund'];
+	   	//$data[$name]=$hand;
 	}
 
 	header('Access-Control-Allow-Origin: *');
-	echo json_encode($data);
+	echo json_encode($enemyHand);
 	$dbh=NULL;
