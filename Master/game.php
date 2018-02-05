@@ -189,7 +189,7 @@
 		//170px
 		//100px 
 		var playername = "<?= $name ?>";
-		var myHand = -1;
+		var myHand = 2;
 		var enemyHnad = -1;
 		
 		var jibun = document.querySelector("#jibun");
@@ -242,110 +242,6 @@
 			submit.disabled = "disabled";
 			
 			update.disabled = "";
-		
-			var request = new XMLHttpRequest(); 	//PHPとやりとり
- 			request.open('GET', 'http://localhost/Buttle.php?name=' + playername + '&hand=' + myHand, false);
- 			request.onload = function() 
- 			{ 
- 				if (request.status === 200) 
- 				{ //ステータスコードが200ならデータの受け渡し成功 
- 					var response = request.responseText; //JSONデータを受け取る
- 					var json     = JSON.parse(response); //JSで使えるようにする
- 					
- 					enemyHand = Number(json);
- 					if(enemyHand !== -1)
- 					{
- 						 if((myHand === 1 && enemyHand === 1) ||
- 							(myHand === 2 && enemyHand === 2) ||
- 							(myHand === 3 && enemyHand === 3))
- 						{
- 							//あいこの画像と次の勝負へ的なボタンを出す
- 							next.disabled = "";
- 							kekka.innerHTML = "あいこ";
- 							
- 							if(enemyHand === 1)
- 								aite.setAttribute("src", "image/janken_gu.png");
- 							else if(enemyHand === 2)
- 								aite.setAttribute("src", "image/janken_choki.png");
- 							else if(enemyHand === 3)
- 								aite.setAttribute("src", "image/janken_pa.png");
- 						}
- 						else if((myHand === 1 && enemyHand === 2) ||
- 							(myHand === 2 && enemyHand === 3) ||
- 							(myHand === 3 && enemyHand === 1))
- 						{
- 							//勝ち
- 							next.disabled = "";
- 							if(myHand === 1)
- 								myManpuku += 10;
- 							else if(myHand === 2)
- 								myManpuku += 20;
- 							else if(myHand === 3)
- 								myManpuku += 50;
- 							
- 							if(enemyHand === 1)
- 								aite.setAttribute("src", "image/janken_gu.png");
- 							else if(enemyHand === 2)
- 								aite.setAttribute("src", "image/janken_choki.png");
- 							else if(enemyHand === 3)
- 								aite.setAttribute("src", "image/janken_pa.png");
- 								
- 							jibunManpukuText.innerHTML = myManpuku;
- 							
- 							kekka.innerHTML = "勝ち！";
- 							
- 							jibunGage.style.clip = 'rect(0px, 640px, ' + (base - myManpuku * 0.7) + 'px, 0px)';
- 							
- 							if(myManpuku >= 100)
- 							{
- 								window.location.href = 'http://localhost/result.php?result=勝ち';
- 							}
- 						}
- 						else if((myHand === 1 && enemyHand === 3) ||
- 							(myHand === 2 && enemyHand === 1) ||
- 							(myHand === 3 && enemyHand === 2))
- 						{
- 							//負け
- 							next.disabled = "";
- 							if(enemyHand === 1)
- 								enemyManpuku += 10;
- 							else if(enemyHand === 2)
- 								enemyManpuku += 20;
- 							else if(enemyHand === 3)
- 								enemyManpuku += 50;
- 								
- 							if(enemyHand === 1)
- 								aite.setAttribute("src", "image/janken_gu.png");
- 							else if(enemyHand === 2)
- 								aite.setAttribute("src", "image/janken_choki.png");
- 							else if(enemyHand === 3)
- 								aite.setAttribute("src", "image/janken_pa.png");
- 								
- 							aiteManpukuText.innerHTML = enemyManpuku;
- 							
- 							kekka.innerHTML = "負け！";
- 							
- 							aiteGage.style.clip = 'rect(0px, 640px, ' + (base - enemyManpuku * 0.7) + 'px, 0px)';
- 							
- 							if(enemyManpuku >= 100)
- 							{
- 								window.location.href = 'http://localhost/result.php?result=負け';
- 							}
- 						}
- 					}
- 					else
- 					{
- 					}
-
- 				} 
- 			}; 
- 			request.onerror = function() 
- 			{ 
- 				//エラー時の処理 
- 				canvas.innerHTML = "Error!"; 
- 			}; 
- 			//送信 
- 			request.send();		//POSTの場合は引数に文字列を渡す 
 		});
 		
 		update.addEventListener("click", function()
