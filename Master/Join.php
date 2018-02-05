@@ -24,7 +24,7 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 	}
 	//いなかったらsqlに登録
 	if($isName==FALSE){
-	$sql = 'insert into JunkenState values(:name,-1,-1)';//新しいデータを入れる
+	$sql = 'insert into JunkenState values(:name,-1)';//新しいデータを入れる
 	$sth = $dbh->prepare($sql);         //SQL準備
 	$sth->bindValue(':name', $name, PDO::PARAM_STR);
 	$sth->execute();
