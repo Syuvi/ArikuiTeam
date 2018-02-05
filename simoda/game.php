@@ -76,8 +76,6 @@
 			
 			width : 316px;
 			height : 25px;
-			
-			visibility: visible;
 		}
 		
 		#jibunManpukuText {
@@ -256,7 +254,7 @@
  					var response = request.responseText; //JSONデータを受け取る
  					var json     = JSON.parse(response); //JSで使えるようにする
  					
- 					enemyHand = json.enemyHand;
+ 					enemyHand = Number(json.enemyHand);
  					if(enemyHand !== -1)
  					{
  						 if((myHand === 1 && enemyHand === 1) ||
@@ -264,8 +262,7 @@
  							(myHand === 3 && enemyHand === 3))
  						{
  							//あいこの画像と次の勝負へ的なボタンを出す
- 							next.style.visibility = visible;
- 							
+ 							next.disabled = "";
  							kekka.innerHTML = "あいこ";
  						}
  						else if((myHand === 1 && enemyHand === 2) ||
@@ -273,7 +270,7 @@
  							(myHand === 3 && enemyHand === 1))
  						{
  							//勝ち
- 							next.style.visibility = visible;
+ 							next.disabled = "";
  							if(myHand === 1)
  								myManpuku += 1;
  							else if(myHand === 2)
@@ -292,8 +289,7 @@
  							(myHand === 3 && enemyHand === 2))
  						{
  							//負け
- 							next.style.visibility = visible;
- 							
+ 							next.disabled = "";
  							if(enemyHand === 1)
  								enemyManpuku += 1;
  							else if(enemyHand === 2)
