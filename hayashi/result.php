@@ -30,7 +30,7 @@ $result=$_GET['result'];
 			}
 			titlebutton.addEventListener("click", function(){
 				var request = new XMLHttpRequest(); 	//PHPとやりとり
- 				request.open('GET', 'http://localhost/AllReset', false); //1:GETかPOST 2:ファイル指定 3:同期か非同期か
+ 				request.open('GET', 'http://localhost/AllReset.php', false); //1:GETかPOST 2:ファイル指定 3:同期か非同期か
  				request.onload = function() { 
  					if (request.status === 200) { //ステータスコードが200ならデータの受け渡し成功 
  						var response = request.responseText; //JSONデータを受け取る
