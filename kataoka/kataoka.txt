@@ -7,5 +7,5 @@ git commit -a -m '作業コメント'
 git push
 <プル手順>
 git pull
-
+aaaa
 
