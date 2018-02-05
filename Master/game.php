@@ -277,11 +277,11 @@
  							//勝ち
  							next.disabled = "";
  							if(myHand === 1)
- 								myManpuku += 1;
+ 								myManpuku += 10;
  							else if(myHand === 2)
- 								myManpuku += 2;
+ 								myManpuku += 20;
  							else if(myHand === 3)
- 								myManpuku += 5;
+ 								myManpuku += 50;
  							
  							if(enemyHand === 1)
  								aite.setAttribute("src", "image/janken_gu.png");
@@ -308,11 +308,11 @@
  							//負け
  							next.disabled = "";
  							if(enemyHand === 1)
- 								enemyManpuku += 1;
+ 								enemyManpuku += 10;
  							else if(enemyHand === 2)
- 								enemyManpuku += 2;
+ 								enemyManpuku += 20;
  							else if(enemyHand === 3)
- 								enemyManpuku += 5;
+ 								enemyManpuku += 50;
  								
  							if(enemyHand === 1)
  								aite.setAttribute("src", "image/janken_gu.png");
