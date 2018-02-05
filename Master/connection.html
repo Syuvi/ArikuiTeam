@@ -19,7 +19,6 @@
 			var connect=document.querySelector("#connect");
 			var request=new XMLHttpRequest();
 			var errormessage=document.querySelector("#errormessage");
-			errormessage.innerHTML="すでに使用されている名前です。もう一度入力してください。";
 			submit.addEventListener("click", function(){
 				var request = new XMLHttpRequest(); 	//PHPとやりとり
  				request.open('GET', 'http://localhost/Join.php?name='+p_name.value, false); //1:GETかPOST 2:ファイル指定 3:同期か非同期か
