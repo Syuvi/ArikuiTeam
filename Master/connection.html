@@ -19,7 +19,6 @@
 			var connect=document.querySelector("#connect");
 			var request=new XMLHttpRequest();
 			var errormessage=document.querySelector("#errormessage");
-			
 			submit.addEventListener("click", function(){
 				var request = new XMLHttpRequest(); 	//PHPとやりとり
  				request.open('GET', 'http://localhost/Join.php?name='+p_name.value, false); //1:GETかPOST 2:ファイル指定 3:同期か非同期か
@@ -27,12 +26,12 @@
  					if (request.status === 200) { //ステータスコードが200ならデータの受け渡し成功 
  						var response = request.responseText; //JSONデータを受け取る
  						var json     = JSON.parse(response); //JSで使えるようにする
-  						if(json.isName===true){
-  							errormessage.innerHTML="すでに使用されている名前です。もう一度入力してください。";
+  						if(json.isName=="TRUE"){
+  								errormessage.innerHTML="すでに使用されている名前です。もう一度入力してください。";
   						}
-  						else(json.isName===false){
-  							connect.style.visibility=visible;
-  							submit.style.visibility=hidden;
+  						else{
+  							connect.style.visibility='visible';
+  							submit.style.visibility='hidden';
   						}	
  					} 
  				}; 
