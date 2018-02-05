@@ -354,7 +354,7 @@
 			kekka.innerHTML = "";
 			
 			var request = new XMLHttpRequest(); 	//PHPとやりとり
- 			request.open('GET', 'http://localhost/Buttle.php?name=' + playername + '&hand=' + myHand, false);
+ 			request.open('GET', 'http://localhost/HandReset.php, false);
  			request.onload = function() 
  			{ 
  				if (request.status === 200) 
