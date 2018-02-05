@@ -1,5 +1,4 @@
 <?php
-//あいうえお
 $name=$_GET['name'];
 $hand=$_GET['hand'];;
 //mysql処理
@@ -48,3 +47,4 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 
 	header('Access-Control-Allow-Origin: *');
 	echo json_encode($data);
+	$dbh=NULL;

@@ -9,21 +9,10 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 //-------------------------------------------------
 // ユーザー名処理
 //-------------------------------------------------
-	//相手とマッチしたかどうか
-	$isMatti=FALSE;
-	//人数確認用
-	$count=0;
 	$dbh = new PDO($dsn, $user, $pw);   //接続
-	//テーブルの中身を表示
-	$sql='select * from JunkenState';
-	$result = $dbh -> query($sql);
-	
-	//テーブルの中身を連装配列に
-	foreach($result as $row){
-		$count++;
-	}
-	if($count>=2)$isMatti=TRUE;
-
-	header('Access-Control-Allow-Origin: *');
-	echo json_encode($isMatti);
+	//全てのプレイヤー情報を消す
+	$sql='delete from JunkenState';
+	$sth=$dbh->prepare($sql);
+	$sth->execute();
+	//sqlを閉じる
 	$dbh=NULL;
