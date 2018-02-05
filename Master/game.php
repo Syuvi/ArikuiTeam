@@ -204,6 +204,7 @@
 		var submit = document.getElementById("submit");
 		var update = document.getElementById("update");
 		var next = document.getElementById("next");
+		next.disabled = "disabled";
 		
 		var myManpuku = 0;
 		var enemyManpuku = 0;
@@ -264,6 +265,13 @@
  							//あいこの画像と次の勝負へ的なボタンを出す
  							next.disabled = "";
  							kekka.innerHTML = "あいこ";
+ 							
+ 							if(enemyHand === 1)
+ 								aite.setAttribute("src", "image/janken_gu.png");
+ 							else if(enemyHand === 2)
+ 								aite.setAttribute("src", "image/janken_choki.png");
+ 							else if(enemyHand === 3)
+ 								aite.setAttribute("src", "image/janken_pa.png");
  						}
  						else if((myHand === 1 && enemyHand === 2) ||
  							(myHand === 2 && enemyHand === 3) ||
@@ -277,6 +285,13 @@
  								myManpuku += 2;
  							else if(myHand === 3)
  								myManpuku += 5;
+ 							
+ 							if(enemyHand === 1)
+ 								aite.setAttribute("src", "image/janken_gu.png");
+ 							else if(enemyHand === 2)
+ 								aite.setAttribute("src", "image/janken_choki.png");
+ 							else if(enemyHand === 3)
+ 								aite.setAttribute("src", "image/janken_pa.png");
  								
  							jibunManpukuText.innerHTML = myManpuku;
  							
@@ -296,6 +311,13 @@
  								enemyManpuku += 2;
  							else if(enemyHand === 3)
  								enemyManpuku += 5;
+ 								
+ 							if(enemyHand === 1)
+ 								aite.setAttribute("src", "image/janken_gu.png");
+ 							else if(enemyHand === 2)
+ 								aite.setAttribute("src", "image/janken_choki.png");
+ 							else if(enemyHand === 3)
+ 								aite.setAttribute("src", "image/janken_pa.png");
  								
  							aiteManpukuText.innerHTML = enemyManpuku;
  							
@@ -317,10 +339,6 @@
  			}; 
  			//送信 
  			request.send();		//POSTの場合は引数に文字列を渡す 
-			
-			gu.disabled = "";
-			choki.disabled = "";
-			pa.disabled = "";
 		});
 		
 		next.addEventListener("click", function()
@@ -334,6 +352,24 @@
 			next.disabled = "disabled";
 			
 			kekka.innerHTML = "";
+			
+			var request = new XMLHttpRequest(); 	//PHPとやりとり
+ 			request.open('GET', 'http://localhost/HandReset.php, false);
+ 			request.onload = function() 
+ 			{ 
+ 				if (request.status === 200) 
+ 				{ //ステータスコードが200ならデータの受け渡し成功 
+ 					var response = request.responseText; //JSONデータを受け取る
+ 					var json     = JSON.parse(response); //JSで使えるようにする
+ 				} 
+ 			}; 
+ 			request.onerror = function() 
+ 			{ 
+ 				//エラー時の処理 
+ 				canvas.innerHTML = "Error!"; 
+ 			}; 
+ 			//送信 
+ 			request.send();		//POSTの場合は引数に文字列を渡す 
 		});
 	
 	</script>
