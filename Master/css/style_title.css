@@ -1,0 +1,21 @@
+#titlewindow{
+	width:      800px;
+	height:     600px;
+	border: 	  1px solid gray;
+	text-align: center;
+	background-image: url(../image/title.png);
+	background-size: 800px 600px;
+}
+
+#titlewindow > form > button{
+	margin-top: 140px;
+	width:      200px;
+	height:     60px;
+	font-size:  16pt;
+	margin-bottom: 10px;
+}
+
+#titleword{
+	margin-top: 140px;
+	width:	500px;
+}
