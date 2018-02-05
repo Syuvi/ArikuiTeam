@@ -33,3 +33,4 @@ $pw   = 'H@chiouji1';   //MySQLのパスワード
 	header('Access-Control-Allow-Origin: *');
 
 echo json_encode($isName);
+$dbh=NULL;
