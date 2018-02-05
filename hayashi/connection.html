@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>ハングリーじゃんけん</title>
+		<link rel="stylesheet" href="css/style_connection.css">
+	</head>	
+	<body>
+		<section id="connectionwindow">
+			<h3>名前を入力してください</h3>	
+			<input id="p_name" type="text" name="playername">
+			<button id="transmission"><strong>送信</strong></button>
+			<div id="errormessage"></div>
+		</section>
+		<script>
+			var p_name = document.querySelector("#p_name");
+			var transmission=document.querySelector("#transmission");
+			var request=new XMLHttpRequest();
+			var errormessage=document.querySelector("#errormessage");
+			
+			transmission.addEventListener("click", function(){
+				var request = new XMLHttpRequest(); 	//PHPとやりとり
+ 				request.open('GET', 'http://localhost/Join.php?name='+p_name.value, false); //1:GETかPOST 2:ファイル指定 3:同期か非同期か
+ 				request.onload = function() { 
+ 					if (request.status === 200) { //ステータスコードが200ならデータの受け渡し成功 
+ 						var response = request.responseText; //JSONデータを受け取る
+ 						var json     = JSON.parse(response); //JSで使えるようにする
+  						if(json.isName===true){
+  								errormessage.innerHTML="すでに使用されている名前です。もう一度入力してください。";
+  						}
+  						else{
+  							window.location.href = 'http://localhost/game.html';
+  						}	
+ 					} 
+ 				}; 
+ 				request.onerror = function() { 
+ 				//エラー時の処理 
+ 				canvas.innerHTML = "Error!"; 
+ 				}; 
+ 				//送信 
+ 				request.send();		//POSTの場合は引数に文字列を渡す 
+			});
+		</script>
+	</body>
+</html>

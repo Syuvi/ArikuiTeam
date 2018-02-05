@@ -3,17 +3,18 @@
 	height:     600px;
 	border: 	  1px solid gray;
 	text-align: center;
-	//background-image: url(image/title_back.jpg);
+	background-image: url(../image/title.png);
 	background-size: 800px 600px;
 }
 
 #titlewindow > h1{
-	margin-top: 200px;
+	margin-top: 100px;
 	font-size: 32pt;
-	color : #000;
+	color : #ffffff;
 }
 
 #titlewindow > form > button{
+	margin-top: 150px;
 	width:      200px;
 	height:     60px;
 	font-size:  16pt;
