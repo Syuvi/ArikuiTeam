@@ -26,12 +26,12 @@ $result=$_GET['result'];
 			var resultMen=document.querySelector("#resultMen");
 			var titlebutton= document.querySelector("#titlebutton");
 			if(result=="勝ち"){
-				resultwindow.style.backgroundImage="url(image/win_back.jpg)";
+				resultwindow.style.backgroundImage="url(image/win_back.png)";
 				resultImg.src="image/kachi.png";
 				resultMen.src="image/winMen.png";
 			}
 			else if(result=="負け"){
-				resultwindow.style.backgroundImage="url(image/lose_back.jpg)";
+				resultwindow.style.backgroundImage="url(image/lose_back.png)";
 				resultImg.src="image/make.png";
 				resultMen.src="image/loseMen.png";
 			}
