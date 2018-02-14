@@ -18,22 +18,18 @@ $result=$_GET['result'];
 				<button id="titlebutton"><strong>タイトルへ</strong></button>
 			</form>
 		</section>
-			<img id="resultMen" src="image/winMen.png">
 		<script>
 			var resultwindow=document.querySelector("#resultwindow");
 			var result = "<?= $result ?>";
 			var resultImg = document.querySelector("#resultImg");
-			var resultMen=document.querySelector("#resultMen");
 			var titlebutton= document.querySelector("#titlebutton");
 			if(result=="勝ち"){
 				resultwindow.style.backgroundImage="url(image/win_back.png)";
 				resultImg.src="image/kachi.png";
-				resultMen.src="image/winMen.png";
 			}
 			else if(result=="負け"){
 				resultwindow.style.backgroundImage="url(image/lose_back.png)";
 				resultImg.src="image/make.png";
-				resultMen.src="image/loseMen.png";
 			}
 			titlebutton.addEventListener("click", function(){
 				var request = new XMLHttpRequest(); 	//PHPとやりとり
