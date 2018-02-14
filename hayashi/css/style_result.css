@@ -29,5 +29,7 @@
 }
 
 #resultMen{
-	margin-left:480px;
+	position:absolute;
+	left:480px;
+	top:150px;
 }

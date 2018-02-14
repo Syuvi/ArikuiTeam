@@ -13,12 +13,12 @@ $result=$_GET['result'];
 		<section id="resultwindow">
 			<h1>結果発表</h1>	
 			<img id="resultImg" src="image/kachi.png">
-			<img id="resultMen" src="image/winMen.png">
+			
 			<form action="title.html">
 				<button id="titlebutton"><strong>タイトルへ</strong></button>
 			</form>
 		</section>
-			
+			<img id="resultMen" src="image/winMen.png">
 		<script>
 			var resultwindow=document.querySelector("#resultwindow");
 			var result = "<?= $result ?>";
